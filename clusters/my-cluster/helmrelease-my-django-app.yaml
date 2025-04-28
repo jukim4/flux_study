@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: my-django-app
+  namespace: default
+spec:
+  releaseName: my-django-app
+  chart:
+    spec:
+      chart: /root/helm_study/my-django-app  # Git 리포지토리 내에서 Helm 차트 경로
+      sourceRef:
+        kind: GitRepository
+        name: my-django-app-repo  # GitRepository 리소스 이름
+        namespace: flux-system
+      interval: 5m0s
+  values:
+    image:
+      repository: jukim4/hello-world-app
+      tag: latest

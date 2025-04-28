@@ -1,0 +1,10 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: my-django-app-repo
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  url: https://github.com/jukim4/flux_study.git  # GitHub 리포지토리 URL
+  ref:
+    branch: main
